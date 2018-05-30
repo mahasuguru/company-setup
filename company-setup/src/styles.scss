@@ -1,0 +1,111 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+body {
+  background-color: #ffffff;
+  font-family: Arial;
+  color: #d33a2c;
+  padding: 5% 5% 5% 5%;
+  margin: 5px 5px 5px 5px;
+}
+
+.body-content {
+  padding: 0% 0%;
+  display: inline-block;
+}
+
+.clear{
+  clear: both;
+}
+
+
+.row{
+  padding: 1% 1% 1% 1%;
+  display: inline-block;
+}
+
+.clear{
+  clear: both;
+}
+
+
+.form-container{
+  margin: 0px 2px 1px 1px;
+  padding: 1% 1% 1% 0%;
+  display: inline-block;
+  justify-content: inherit;
+}
+
+.clear{
+  clear: both;
+}
+
+
+nav left{
+  margin: 0px 2px 1px 1px;
+  display: inline-block;
+  align-content: left;
+  float: left;
+  width: 10%;
+  padding:1px 1px 1px 1px;
+}
+.left{
+  margin: 0px 2px 1px 1px;
+  display: inline-block;
+  align-content: left;
+  float: left;
+  width: 30%;
+  padding:1px 1px 1px 1px;
+}
+.clear{
+  clear: both;
+}
+
+nav {
+  display: inline-block;
+
+  width: 30%;
+}
+
+nav center{
+  margin: 0px 2px 1px 1px;
+  display: inline-block;
+  align-content: left;
+
+  width: 40%;
+}
+
+.clear{
+  clear: both;
+}
+
+nav {
+  display: inline-block;
+  float: right;
+  width: 50%;
+}
+
+.right{
+  margin: 0px 2px 1px 1px;
+  display: inline-block;
+  align-content: left;
+  float: right;
+  width: 30%;
+}
+
+.clear{
+  clear: both;
+}
+
+.button-set {
+  padding: 5px 0px 5px 10px;
+}
+
+.row text-right {
+  color: #ffffff;
+  background: #b52c1f;
+  border: 1px solid #b52c1f;
+  padding: 5px 10px;
+  margin: 0px 10px;
+}
+
+
