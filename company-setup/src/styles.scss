@@ -3,8 +3,8 @@
 body {
   background-color: #ffffff;
   font-family: Arial;
-  color: #d33a2c;
-  padding: 5% 5% 5% 5%;
+  color: #361c1f;
+  padding: 5% 0% 5% 5%;
   margin: 5px 5px 5px 5px;
 }
 
@@ -16,80 +16,81 @@ body {
 .clear{
   clear: both;
 }
+.container-fluid {
 
-
-.row{
-  padding: 1% 1% 1% 1%;
-  display: inline-block;
+  .errorMsg {
+    width: 400px;
+    list-style: none;
+    padding: 10px;
+    border: 1px solid red;
+    color: red;
+  }
 }
-
-.clear{
-  clear: both;
-}
-
-
 .form-container{
   margin: 0px 2px 1px 1px;
-  padding: 1% 1% 1% 0%;
+  padding: 1% 0% 1% 0%;
   display: inline-block;
   justify-content: inherit;
+
 }
 
 .clear{
   clear: both;
 }
+nav {
+  min-width: 410px;
+  height: available;
+  min-height: 200px;
+  display: inline-block;
+  float: left;
+  width: 30%;
+  padding: 1% 2% 2% 1%;
 
+  border-collapse: collapse;
+}
 
 nav left{
-  margin: 0px 2px 1px 1px;
-  display: inline-block;
-  align-content: left;
+  width: 25%;
+  min-width: 350px;
+  height: available;
+  min-height: 400px;
   float: left;
-  width: 10%;
-  padding:1px 1px 1px 1px;
+  background-color: rosybrown;
+  border-collapse: collapse;
+  padding: 0% 2% 2% 1%;
 }
-.left{
-  margin: 0px 2px 1px 1px;
-  display: inline-block;
-  align-content: left;
-  float: left;
-  width: 30%;
-  padding:1px 1px 1px 1px;
-}
+
 .clear{
   clear: both;
 }
 
-nav {
-  display: inline-block;
 
-  width: 30%;
-}
 
 nav center{
-  margin: 0px 2px 1px 1px;
-  display: inline-block;
-  align-content: left;
-
-  width: 40%;
+  width: 50%;
+  min-width: 800px;
+  height: available;
+  min-height: 650px;
+  float: left;
+  background-color: royalblue;
+  border-collapse: collapse;
+  padding: 0% 2% 2% 1%;
 }
 
 .clear{
   clear: both;
 }
 
-nav {
-  display: inline-block;
-  float: right;
-  width: 50%;
-}
 
-.right{
-  margin: 0px 2px 1px 1px;
-  display: inline-block;
-  align-content: left;
-  float: right;
-  width: 30%;
+
+nav right{
+  width: available;
+  height: available;
+  position: relative;
+  margin-left: 75%;
+  background-color: yellow;
+  border-collapse: collapse;
+  padding: 0% 2% 2% 1%;
 }
 
 .clear{
@@ -97,15 +98,31 @@ nav {
 }
 
 .button-set {
-  padding: 5px 0px 5px 10px;
+  padding: 5px 10px 5px 10px;
 }
 
 .row text-right {
-  color: #ffffff;
-  background: #b52c1f;
-  border: 1px solid #b52c1f;
+  color: #361c1f;
+background-color:#ffffff;
   padding: 5px 10px;
-  margin: 0px 10px;
+  margin: 10px 10px;
+
+}
+#cancelBtn{
+
+  color: #361c1f;
+  background-color:#ffffff;
+  padding: 5px 10px;
+  margin: 10px 10px;
 }
 
+#saveBtn{
+  color: #361c1f;
+  background-color:#ffffff;
 
+  padding: 5px 10px;
+  margin: 10px 10px;
+}
+.clear{
+  clear: both;
+}
