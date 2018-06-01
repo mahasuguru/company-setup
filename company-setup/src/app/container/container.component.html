@@ -1,5 +1,5 @@
 <h5>Introduction & Company Information>></h5>
-
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <div class="container-fluid ">
   <ul class='errorMsg' *ngIf="errorMsgList">
     <li *ngFor="let errorMsg of errorMsgList">{{errorMsg}}</li>
@@ -10,7 +10,10 @@
     <div class="left">
   <div class="form-group">
     <label>Company Name : </label>
-      <input type="text" name="company_name" value="" id="company_name" placeholder="Company Name" >
+      <input type="text" name="company_name" value=""  id="company_name" placeholder="Company Name" ng-model="company_name" required >
+    <span style="color:red" ng-show="form-container.Company_Name.$touched && form-container.company_name.$invalid">
+      <span ng-show="form-container.company_name.$error.required">Username is required.</span>
+    </span>
   </div>
 
   <div class="form-group">
@@ -21,8 +24,10 @@
 
   <div class="form-group">
     <label>Incorp.Date<span style="color: red">*</span> : </label>
-    <input ng-model="date" uib-datepicker-popup is-open="isopen">
+
   </div>
+
+
 
     <div class="form-group">
       <label>Address : </label>
@@ -252,7 +257,7 @@
 
 
   <div class="row text-right" style="margin-top: 15px;">
-    <button id="cancelBtn" class="btn btn-primary hi_btn ">Cancel</button>
+    <input type='submit'class="right" (click)="cancel()" value="cancel" />
     <input type='submit'class="right" (click)="save()" value="save" />
   </div>
 </div>
