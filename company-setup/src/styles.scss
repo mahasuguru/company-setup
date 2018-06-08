@@ -18,8 +18,9 @@ body {
 .clear{
   clear: both;
 }
-.container-fluid {
 
+.container-fluid {
+ // background-color: antiquewhite;
   .errorMsg {
     width: 400px;
     list-style: none;
@@ -33,12 +34,43 @@ body {
   padding: 1% 0% 1% 0%;
   display: inline-block;
   justify-content: inherit;
-
+background-color: rgba(57, 77, 78, 0.14);
+}
+.clear{
+  clear: both;
+}
+.form-group{
+  margin: 0px 2px 1px 1px;
+  padding: 1% 0% 1% 0%;
+  //display: inline-block;
+  justify-content: inherit;
 }
 
 .clear{
   clear: both;
 }
+.form-control{
+  margin: 0px 2px 1px 1px;
+  padding: 1% 0% 1% 0%;
+  display: inline-block;
+  justify-content: inherit;
+}
+.clear{
+  clear: both;
+}
+
+.alert alert-dange{
+  margin: 0px 2px 1px 1px;
+  padding: 1% 0% 1% 0%;
+  display: inline-block;
+  justify-content: inherit;
+  font-color:red;
+}
+.clear{
+  clear: both;
+}
+
+
 nav {
   min-width: 410px;
   height: available;

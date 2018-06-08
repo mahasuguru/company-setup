@@ -1,89 +1,164 @@
 <h5>Introduction & Company Information>></h5>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <div class="container-fluid ">
-  <ul class='errorMsg' *ngIf="errorMsgList">
-    <li *ngFor="let errorMsg of errorMsgList">{{errorMsg}}</li>
-  </ul>
 
-<form class="form-container">
+<form class="form-container"   #form="ngForm" ng-Submit="form.$valid && form.save()" novalidate>
   <nav>
-    <div class="left">
   <div class="form-group">
     <label>Company Name : </label>
-      <input type="text" name="company_name" value=""  id="company_name" placeholder="Company Name" ng-model="company_name" required >
-    <span style="color:red" ng-show="form-container.Company_Name.$touched && form-container.company_name.$invalid">
-      <span ng-show="form-container.company_name.$error.required">Username is required.</span>
-    </span>
-  </div>
+      <input type="text"  name="cname"  id="name" placeholder="Company Name" [(ngModel)]="company_name"
+             required minlength="4"  #cname="ngModel" >
+    <div *ngIf="cname.invalid && (cname.dirty || cname.touched)"
+         class="alert alert-danger">
 
+      <div *ngIf="cname.errors.required">
+       Company Name is required.
+      </div>
+      <div *ngIf="cname.errors.minlength">
+        Name must be at least 4 characters long.
+      </div>
+  </div>
+  </div>
   <div class="form-group">
     <label>Company/UTN No<span style="color: red">*</span> : </label>
-    <input type="text" name="company_no" maxlength="12" value=""
-           id="company_no" placeholder="Company No.">
+    <input type="text" name="companyno" required maxlength="12"
+           id="company_no" placeholder="Company No."[(ngModel)]="company_no" #companyno="ngModel">
+    <div *ngIf="companyno.invalid && (companyno.dirty ||companyno.touched)"
+         class="alert alert-danger">
+
+      <div *ngIf="companyno.errors.required">
+        Company no is required.
+      </div>
+    </div>
   </div>
 
   <div class="form-group">
-    <label>Incorp.Date<span style="color: red">*</span> : </label>
+      <label>Incorp.Date<span style="color: red">*</span> : </label>
+      <input type="date" name="incdate" id="incdate" required [(ngModel)]="incdatedate" #incdate="ngModel">
+    <div *ngIf="incdate.invalid && (incdate.dirty ||incdate.touched)"
+         class="alert alert-danger">
 
+      <div *ngIf="incdate.errors.required">
+        Incorp date is required.
+      </div>
+    </div>
   </div>
-
-
 
     <div class="form-group">
       <label>Address : </label>
-      <textarea name="address" cols="" rows="" id="companyAddress"
-                class="form-control"></textarea>
+      <textarea name="address"  required id="company_Address" placeholder="text area" [(ngModel)]="company_Address" #address="ngModel"
+                class="form-control" maxlength="243" ></textarea>
+      <div *ngIf="address.invalid && (address.dirty || address.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="address.errors.required">
+          Address is required.
+        </div>
+        <div *ngIf="address.errors.maxlength">
+          Address Field length is exceeded maxLength(245).
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
       <label>Phone Number : </label>
-      <input type="text" name="phone" maxlength="16" value="" id="phone"
-             class="form-control input-md"
-             onblur="this.value = this.value.replace(/[^0-9]+/, '');"
-             onkeyup="this.value = this.value.replace(/[^0-9]+/, '');"
-             placeholder="Phone Number">
+      <input type="number" name="phoneno" maxlength="10"  id="phone" required
+             class="form-control" maxlength="10" placeholder="Phone Number" [(ngModel)]="phone" #name="ngModel">
+      <div *ngIf="name.invalid && (name.dirty || name.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="name.errors.required">
+         phone is required.
+        </div>
+        <div *ngIf="phoneno.errors.maxlength">
+          phone Field length is exceeded maxLength(10).
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
       <label>Fax No. : </label>
-      <input type="text" name="fax" maxlength="16" value="" id="fax"
+      <input type="text" name="fno" required maxlength="16"  id="fax"
              class="form-control input-md"
-             onblur="this.value = this.value.replace(/[^0-9]+/, '');"
              onkeyup="this.value = this.value.replace(/[^0-9]+/, '');"
-             placeholder="Fax No.">
+             placeholder="Fax No." [(ngModel)]="fax" #fno="ngModel">
+      <div *ngIf="fno.invalid && (fno.dirty || fno.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="fno.errors.required">
+          fax no is required.
+        </div>
+        <div *ngIf="fno.errors.maxlength">
+         fax no  length is exceeded maxLength(16).
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
       <label>PAN : </label>
-      <input type="text" name="panNumber" maxlength="10" value="" id="pan"
-             class="form-control input-md"
-             onblur="this.value = this.value.replace(/[^a-zA-Z 0-9\n\r.]+/g, '');"
+      <input type="text" name="panno"  required maxlength="10" id="pan"
+             class="form-control"
              onkeyup="this.value = this.value.replace(/[^a-zA-Z 0-9\n\r.]+/g, '');"
-             placeholder="PAN No.">
+             placeholder="PAN No." [(ngModel)]="pan" #panno="ngModel">
+      <div *ngIf="panno.invalid && (panno.dirty || panno.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="panno.errors.required">
+          pan no is required.
+        </div>
+        <div *ngIf="panno.errors.maxlength">
+          fax no  length is exceeded maxLength(10).
+        </div>
+      </div>
     </div>
 
 
     <div class="form-group">
       <label>Language : </label>
-      <input type="text" name="lang" maxlength="245" value="" id="lang"
-             class="form-control input-md"
+      <input type="text" name="language"  required maxlength="245" value="" id="lang"
+             class="form-control"
              onblur="this.value = this.value.replace(/[^a-z-A-Z]+/, '');"
              onkeyup="this.value = this.value.replace(/[^a-z-A-Z]+/, '');"
-             placeholder="Language" oninput="validateAlpha();">
+             placeholder="Language" [(ngModel)]="lang" #language="ngModel">
+      <div *ngIf="language.invalid && (language.dirty || language.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="language.errors.required" >
+         lan field is required.
+        </div>
+        <div *ngIf="language.errors.maxlength">
+          lan  length is exceeded maxLength(245).
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
       <label>Email : </label>
-      <input type="text" name="email" maxlength="245" value="" id="email"
-             class="form-control input-md"
-             onblur="validateEmail(this.value)" placeholder="Email">
+      <input type="email" name="ename"  id="email" required
+             class="form-control"
+             onblur="validateEmail(this.value)" placeholder="Email" [(ngModel)]="email" #ename="ngModel">
+      <div *ngIf="ename.invalid && (ename.dirty || ename.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="ename.errors.required" >
+          email  is required.
+        </div>
+        <div *ngIf="ename.errors.invalid">
+          invalid email
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
       <label>Website : </label>
-      <input type="text" name="web" value="" id="web"
-             class="form-control input-md" placeholder="Website">
-    </div>
+      <input type="url" name="website"  id="web" required
+             class="form-control input-md" placeholder="Website" [(ngModel)]="web" #website="ngModel">
+      <div *ngIf="website.invalid && (website.dirty || website.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="website.errors.required" >
+          website  is required.
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -91,63 +166,99 @@
   <div class="center">
     <div class="form-group">
       <label>Country : </label>
-      <select name="countryId" id="countryId" class="form-control"></select>
-    </div>
+      <select name="countryname" id="countryId"  required class="form-control" [(ngModel)]="countryId" #countryname="ngModel">
+        <option value="India">India
+        <option value="Australia">Australia
+        <option value=" Afghanistan"> Afghanistan
+        <option value="Malaysia">UK
+        <option value="US">US
+      </select>
+      <div *ngIf="countryname.invalid && (countryname.dirty || countryname.touched)"
+           class="alert alert-danger">
+        <div *ngIf="countryname.errors.required" >
+        please select country.
+        </div>
+      </div>
+
+    <div *ngIf="countryname.valid">
 
     <div class="form-group">
       <label>State<span style="color: red">*</span> : </label>
-      <select name="stateId" id="stateId" class="form-control"></select>
+      <select name="sname" id="stateId"  required class="form-control" [(ngModel)]="stateId" #sname="ngModel">
+        <option *ngFor="let state of states" [value]="state">{{state}}</option>
+
+      </select>
+      <div *ngIf="sname.invalid && (sname.dirty || sname.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="sname.errors.required" >
+          please select state.
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
       <label>Currency : </label>
-      <select name="currencyId" id="currencyId" class="form-control" ng-model="selectedCurrency"></select>
-    </div>
+      <select name="currencyname" id="currencyId" required class="form-control" [(ngModel)]="currencyId" #currencyname="ngModel">
+        <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
 
+      </select>
+      <div *ngIf="currencyname.invalid && (currencyname.dirty || currencyname.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="currencyname.errors.required" >
+          please select currency.
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
   <div class="form-group">
     <label>GST Registered? : </label>
-    <input type="radio" name="registeredCompany"
-           id="registeredCompany_0" value="true" checked="checked"
-           onchange="checkData()">
+    <input type="radio" name="registeredCompany" required
+           id="registeredCompany_0" value="true" checked="checked">
     Yes
-    <input type="radio" name="registeredCompany"
-           id="registeredCompany_1" value="false"
-           onchange="checkData(this)">
+    <input type="radio" name="registeredCompany" required
+           id="registeredCompany_1" value="false">
     No
   </div>
 
   <div class="form-group">
     <label>GST No. : </label>
-    <input type="text" name="registerNo" maxlength="15" value=""
+    <input type="text" name="register" required maxlength="15"
            id="registerNo" class="form-control input-md"
            onblur="this.value = this.value.replace(/[^a-zA-Z 0-9\n\r.]+/g, ''),equalcheckComvsGst();"
            onkeyup="this.value = this.value.replace(/[^a-zA-Z 0-9\n\r.]+/g, '');"
-           placeholder="GST No.">
+           placeholder="GST No." [(ngModel)]="registerNo" #register="ngModel">
+    <div *ngIf="register.invalid && (register.dirty || register.touched)"
+         class="alert alert-danger">
+
+      <div *ngIf="register.errors.required" >
+        GST NO is required.
+      </div>
+    </div>
   </div>
 
   <div class="form-group">
     <label>GST Registered Date : </label>
+    <input type="date" name="gstRegisteredDate" id="gstRegisteredDate" required [(ngModel)]="GSTregisterNo" #gstregister="ngModel">
+    <div *ngIf="gstregister.invalid && (gstregister.dirty || gstregister.touched)"
+         class="alert alert-danger">
 
+      <div *ngIf="gstregister.errors.required" >
+        GST registered date is required.
+      </div>
+    </div>
   </div>
 
   <div class="form-group">
     <label>Company Logo : </label>
-    <div id="imagePreview" class="form-container">
-      <input type="file" name="myFile" value="" id="myFile"
-             class="filestyle" onchange="return ValidateFileUpload()"
-             data-buttontext="Find file"
-             style="height: 28px; width: 175px; position: absolute; clip: rect(0px 0px 0px 0px);"
-             tabindex="-1">
-      <div class="bootstrap-filestyle input-group">
-        <input type="text" class="form-control " disabled=""> <span
-        class="group-span-filestyle input-group-btn" tabindex="0">
-        <label for="myFile" class="btn btn-default " style="margin-bottom: 0; top:3px;">
-          <span class="glyphicon glyphicon-folder-open"></span> Find file</label></span>
-      </div>
-      <img src="resource/images/upload.gif"
-           style="height:170px; width:175px;" id="blah">
-    </div>
-  </div>
+    <input
+      style="display: none"
+      type="file" (change)="onFileChanged($event)"
+      #fileInput>
+    <button type="button" (click)="fileInput.click()">Select File</button>
+    <button (click)="onUpload()">Upload!</button>  </div>
   </div>
 </nav>
 
@@ -155,20 +266,34 @@
     <div class="right">
   <div class="form-group">
     <label>Last Accounting Year Closing Date<span style="color: red">*</span> : </label>
+    <input type="Date" name="yearclosing" id="yearclosing" required [(ngModel)]="yearclosingdate" #yearclosing="ngModel">
+    <div *ngIf="yearclosing.invalid && (yearclosing.dirty || yearclosing.touched)"
+         class="alert alert-danger">
 
+      <div *ngIf="yearclosing.errors.required" >
+        please select yearclosing date.
+      </div>
+    </div>
   </div>
 
     <div class="form-group">
       <label>Closing Method : </label>
-      <select name="closingMethod" id="closingMethod" class="form-control">
+      <select name="closingMethod" id="closingMethod" class="form-control" required [(ngModel)]="closingmethod" #closingMethod="ngModel">
         <option value="yearCl">Yearly Closing</option>
       </select>
+      <div *ngIf="closingMethod.invalid && (closingMethod.dirty || closingMethod.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="closingMethod.errors.required" >
+          please select closing method.
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
       <label>Starting Period<span style="color: red">*</span> : </label>
       <select name="startperiod" id="startperiod"
-              class="form-control">
+              class="form-control" required [(ngModel)]="startingperiod" #startperiod="ngModel">
         <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -183,12 +308,19 @@
         <option value="11">11</option>
         <option value="12">12</option>
       </select>
+      <div *ngIf="startperiod.invalid && (startperiod.dirty || startperiod.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="startperiod.errors.required" >
+          please select startperiod.
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
       <label>Closing Period<span style="color: red">*</span> : </label>
-      <select name="closingperiod" id="closingperiod"
-              class="form-control">
+      <select name="closeperiod" id="closingperiod"
+              class="form-control" required [(ngModel)]="closingperiod" #closeperiod="ngModel">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -202,11 +334,23 @@
         <option value="11">11</option>
         <option value="12">12</option>
       </select>
+      <div *ngIf="closeperiod.invalid && (closeperiod.dirty || closeperiod.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="closeperiod.errors.required" >
+          please select closeingperiod.
+        </div>
+      </div>
+     /* <div *ngIf="closeperiod.valid" class="alert alert-danger">
+        <div *ngIf="(startperiod.value > closeperiod.value) || (starperiod.value == closeperiod.value)">
+            Starting period should not be greater than or equal to closing period
+      </div>
+      </div>*/
     </div>
 
     <div class="form-group">
       <label>Extension Period : </label>
-      <select name="bufferDays" id="bufferDays" class="form-control">
+      <select name="bufferDays" id="bufferDays" class="form-control" required [(ngModel)]="extension" #bufferDays="ngModel">
         <option value="0" selected="selected">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -215,6 +359,13 @@
         <option value="5">5</option>
         <option value="6">6</option>
       </select>
+      <div *ngIf="bufferDays.invalid && (bufferDays.dirty || bufferDays.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="bufferDays.errors.required" >
+          please select extension period.
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
@@ -222,68 +373,56 @@
     </div>
 
     <div class="form-group">
-      <label style="padding-top: 0px;  margin-bottom: 8px!important;">From : </label>
+      <label >From : </label>
       <input type="text" name="startyear" value=""
-             readonly="readonly" id="startyear"
+             id="startyear" required
              class="form-control">
     </div>
 
     <div class="form-group">
-      <label style="padding-top: 0px;">To : </label>
+      <label >To : </label>
       <input type="text" name="endyear" value=""
-             readonly="readonly" id="endyear"
+             required id="endyear"
              class="form-control">
     </div>
 
     <div class="form-group">
-      <label style="padding-top: 0px;">Extension : </label>
+      <label >Extension : </label>
       <input type="text" name="bufferDate" value=""
-             readonly="readonly" id="bufferDate"
+             required id="bufferDate"
              class="form-control">
     </div>
 
     <div class="form-group">
     <label>GST Taxable Period : </label>
       <select name="gstreturnalertdue" id="gstreturnalertdue1"
-              class="form-control">
+              class="form-control" required [(ngModel)]="gsttaxble" #gstreturnalertdue="ngModel">
         <option value="1" selected="selected">Monthly</option>
         <option value="3">Quarterly</option>
       </select>
+      <div *ngIf="gstreturnalertdue.invalid && (gstreturnalertdue.dirty || gstreturnalertdue.touched)"
+           class="alert alert-danger">
+
+        <div *ngIf="gstreturnalertdue.errors.required" >
+          please select GST Taxable.
+        </div>
+      </div>
     </div>
     </div>
   </nav>
 </form>
 
-
-
   <div class="row text-right" style="margin-top: 15px;">
+    <button type="Submit"[disabled]="form.invalid" ng-submit="save()">save</button>
     <input type='submit'class="right" (click)="cancel()" value="cancel" />
-    <input type='submit'class="right" (click)="save()" value="save" />
   </div>
+
 </div>
 
 
 
 
-<div class="modal fade" id="alertModal" role="dialog" tabindex="-1" data-backdrop="static"
-     aria-labelledby="mySmallModalLabel">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header" style="max-height:50px;">
-        <button type="button" class="close" data-dismiss="modal" style="color:#ffffff;">&times;</button>
-        <h4 class="modal-title" style="color:#ffffff;">ALERT</h4>
-      </div>
-      <div class="modal-body">
-        <p>This is a small modal.</p>
-      </div>
-      <div class="modal-footer" style="text-align: center;padding: 5px;">
-        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
-<button id="showAlertModal" type="button" data-toggle="modal" data-target="#alertModal"
-        style="display: none; visibility: hidden;"></button>
+
 

@@ -1,8 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
 import { FormsModule }   from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ContainerComponent } from './container/container.component';
+import {MatFormFieldModule } from '@angular/material';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material';
+
+import {MatNativeDateModule } from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -11,9 +19,17 @@ import { ContainerComponent } from './container/container.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    HttpClientModule,
+    FormsModule,
+    MatDatepickerModule,
+    MatFormFieldModule, MatInputModule,MatNativeDateModule,BrowserAnimationsModule
+
   ],
-  providers: [],
+
+  providers: [
+    ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}
