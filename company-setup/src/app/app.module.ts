@@ -25,7 +25,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
   ],
 
-  providers: [DatePipe
+  providers: [
     ],
   bootstrap: [AppComponent]
 })
