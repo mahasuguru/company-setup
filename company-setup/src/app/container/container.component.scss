@@ -1,0 +1,56 @@
+.containerbody {
+  &.active {
+    .form-group {
+      .ng-invalid {
+        border: 1px solid #F83321;
+      }
+    }
+  }
+}
+  .form-container {
+    .nav {
+      min-width: 410px;
+      height: available;
+      min-height: 200px;
+      display: inline-block;
+      float: left;
+      width: 30%;
+      padding: 1% 2% 2% 1%;
+
+      border-collapse: collapse;
+
+      .form-group {
+        width: 400px;
+        margin: 10px;
+        lable {
+          color: #d33a2c;
+          width: 150px;
+          float: left;
+        }
+        .form-control {
+          border: 1px solid #6b6b6b;
+          border-radius: 3px;
+          padding: 5px;
+        }
+      }
+    }
+  }
+
+
+
+
+.btn-set{
+  margin: 5px;
+  button{
+    padding: 3px;
+    margin: 10px;
+    background: #2888d3;
+    color: #fff;
+    border:1px solid #b52c1f;
+    font-size:18px;
+    &.button-invert{
+      color: #d33a2c;
+      background: #fff;
+    }
+  }
+}

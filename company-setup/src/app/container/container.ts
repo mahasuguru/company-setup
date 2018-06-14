@@ -1,7 +1,28 @@
 export class Container {
-  company_name='';
-  company_no='';
-  address='';
-  stateId='';
-
+  companyName:string;
+  companyNo:number;
+  incdate:string;
+  address:string;
+  phoneno:number;
+  faxno:number;
+  panno:string;
+  language:string;
+  email:string;
+  website:string;
+  countryname:string;
+  state:string;
+  currency:string;
+  GSTregistered:string;
+  GSTno:string;
+  gstRegisteredDate:string;
+  companylogo:any;
+  yearclosing:any;
+  closingMethod:string;
+  startperiod:string;
+  closeperiod:number;
+  ExtensionPeriod:string;
+  startyear:any;
+  endyear:Date;
+  Extension:string;
+  gstreturnalertdue:string;
 }

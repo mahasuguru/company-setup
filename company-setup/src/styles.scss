@@ -19,7 +19,8 @@ body {
   clear: both;
 }
 
-.container-fluid {
+
+form {
  // background-color: antiquewhite;
   .errorMsg {
     width: 400px;
@@ -29,6 +30,7 @@ body {
     color: red;
   }
 }
+
 .form-container{
   margin: 0px 2px 1px 1px;
   padding: 1% 0% 1% 0%;

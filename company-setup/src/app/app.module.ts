@@ -8,7 +8,7 @@ import { ContainerComponent } from './container/container.component';
 import {MatFormFieldModule } from '@angular/material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material';
-
+import {DatePipe} from '@angular/common';
 import {MatNativeDateModule } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -26,7 +26,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
   ],
 
-  providers: [
+  providers: [DatePipe
     ],
   bootstrap: [AppComponent]
 })

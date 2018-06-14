@@ -1,31 +1,37 @@
 <h5>Introduction & Company Information>></h5>
-<div class="container-fluid ">
-
-<form class="form-container"   #form="ngForm" ng-Submit="form.$valid && form.save()" novalidate>
+<div class="containerbody" [class]="submitted?'active':''">
+<form class="form-container" name="userForm"  ng-submit="submitForm(userForm.$valid)" novalidate>
+  <!--
+  <ul *ngIf="errorMessage.length !== 0">
+    <li *ngFor="let error of errorMessage">
+      {{error}}
+    </li>
+  </ul>-->
   <nav>
   <div class="form-group">
     <label>Company Name : </label>
-      <input type="text"  name="cname"  id="name" placeholder="Company Name" [(ngModel)]="company_name"
-             required minlength="4"  #cname="ngModel" >
-    <div *ngIf="cname.invalid && (cname.dirty || cname.touched)"
+      <input type="text"  name="companyName"  id="name" placeholder="Company Name" [(ngModel)]="container.companyName"
+             required minlength="4"  #companyName="ngModel" />
+    <div *ngIf="companyName.invalid && (companyName.dirty || companyName.touched)"
          class="alert alert-danger">
 
-      <div *ngIf="cname.errors.required">
+      <div *ngIf="companyName.errors.required">
        Company Name is required.
       </div>
-      <div *ngIf="cname.errors.minlength">
+      <div *ngIf="companyName.errors.minlength">
         Name must be at least 4 characters long.
       </div>
   </div>
   </div>
+
   <div class="form-group">
     <label>Company/UTN No<span style="color: red">*</span> : </label>
-    <input type="text" name="companyno" required maxlength="12"
-           id="company_no" placeholder="Company No."[(ngModel)]="company_no" #companyno="ngModel">
-    <div *ngIf="companyno.invalid && (companyno.dirty ||companyno.touched)"
+    <input type="text" name="companyNo" required maxlength="12"
+           id="company_no" placeholder="Company No."[(ngModel)]="container.companyNo" #companyNo="ngModel">
+    <div *ngIf="companyNo.invalid && (companyNo.dirty ||companyNo.touched)"
          class="alert alert-danger">
 
-      <div *ngIf="companyno.errors.required">
+      <div *ngIf="companyNo.errors.required">
         Company no is required.
       </div>
     </div>
@@ -33,7 +39,7 @@
 
   <div class="form-group">
       <label>Incorp.Date<span style="color: red">*</span> : </label>
-      <input type="date" name="incdate" id="incdate" required [(ngModel)]="incdatedate" #incdate="ngModel">
+      <input type="date" name="incdate" id="incdate" required [(ngModel)]="container.incdate" #incdate="ngModel">
     <div *ngIf="incdate.invalid && (incdate.dirty ||incdate.touched)"
          class="alert alert-danger">
 
@@ -45,7 +51,7 @@
 
     <div class="form-group">
       <label>Address : </label>
-      <textarea name="address"  required id="company_Address" placeholder="text area" [(ngModel)]="company_Address" #address="ngModel"
+      <textarea name="address"  required id="company_Address" placeholder="text area" [(ngModel)]="container.address" #address="ngModel"
                 class="form-control" maxlength="243" ></textarea>
       <div *ngIf="address.invalid && (address.dirty || address.touched)"
            class="alert alert-danger">
@@ -62,11 +68,11 @@
     <div class="form-group">
       <label>Phone Number : </label>
       <input type="number" name="phoneno" maxlength="10"  id="phone" required
-             class="form-control" maxlength="10" placeholder="Phone Number" [(ngModel)]="phone" #name="ngModel">
-      <div *ngIf="name.invalid && (name.dirty || name.touched)"
+             class="form-control" maxlength="10" placeholder="Phone Number" [(ngModel)]="container.phoneno" #phoneno="ngModel">
+      <div *ngIf="phoneno.invalid && (phoneno.dirty || phoneno.touched)"
            class="alert alert-danger">
 
-        <div *ngIf="name.errors.required">
+        <div *ngIf="phoneno.errors.required">
          phone is required.
         </div>
         <div *ngIf="phoneno.errors.maxlength">
@@ -77,17 +83,17 @@
 
     <div class="form-group">
       <label>Fax No. : </label>
-      <input type="text" name="fno" required maxlength="16"  id="fax"
+      <input type="text" name="faxno" required maxlength="16"  id="fax"
              class="form-control input-md"
              onkeyup="this.value = this.value.replace(/[^0-9]+/, '');"
-             placeholder="Fax No." [(ngModel)]="fax" #fno="ngModel">
-      <div *ngIf="fno.invalid && (fno.dirty || fno.touched)"
+             placeholder="Fax No." [(ngModel)]="container.faxno" #faxno="ngModel">
+      <div *ngIf="faxno.invalid && (faxno.dirty || faxno.touched)"
            class="alert alert-danger">
 
-        <div *ngIf="fno.errors.required">
+        <div *ngIf="faxno.errors.required">
           fax no is required.
         </div>
-        <div *ngIf="fno.errors.maxlength">
+        <div *ngIf="faxno.errors.maxlength">
          fax no  length is exceeded maxLength(16).
         </div>
       </div>
@@ -98,7 +104,7 @@
       <input type="text" name="panno"  required maxlength="10" id="pan"
              class="form-control"
              onkeyup="this.value = this.value.replace(/[^a-zA-Z 0-9\n\r.]+/g, '');"
-             placeholder="PAN No." [(ngModel)]="pan" #panno="ngModel">
+             placeholder="PAN No." [(ngModel)]="container.panno" #panno="ngModel">
       <div *ngIf="panno.invalid && (panno.dirty || panno.touched)"
            class="alert alert-danger">
 
@@ -118,12 +124,12 @@
              class="form-control"
              onblur="this.value = this.value.replace(/[^a-z-A-Z]+/, '');"
              onkeyup="this.value = this.value.replace(/[^a-z-A-Z]+/, '');"
-             placeholder="Language" [(ngModel)]="lang" #language="ngModel">
+             placeholder="Language" [(ngModel)]="container.language" #language="ngModel">
       <div *ngIf="language.invalid && (language.dirty || language.touched)"
            class="alert alert-danger">
 
         <div *ngIf="language.errors.required" >
-         lan field is required.
+         language is required.
         </div>
         <div *ngIf="language.errors.maxlength">
           lan  length is exceeded maxLength(245).
@@ -133,16 +139,15 @@
 
     <div class="form-group">
       <label>Email : </label>
-      <input type="email" name="ename"  id="email" required
-             class="form-control"
-             onblur="validateEmail(this.value)" placeholder="Email" [(ngModel)]="email" #ename="ngModel">
-      <div *ngIf="ename.invalid && (ename.dirty || ename.touched)"
+      <input type="email" name="email"  id="email" required
+             class="form-control" placeholder="email" [(ngModel)]="container.email" #email="ngModel">
+      <div *ngIf="email.invalid && (email.dirty || email.touched)"
            class="alert alert-danger">
 
-        <div *ngIf="ename.errors.required" >
+        <div *ngIf="email.errors.required" >
           email  is required.
         </div>
-        <div *ngIf="ename.errors.invalid">
+        <div *ngIf="email.errors.invalid">
           invalid email
         </div>
       </div>
@@ -151,7 +156,7 @@
     <div class="form-group">
       <label>Website : </label>
       <input type="url" name="website"  id="web" required
-             class="form-control input-md" placeholder="Website" [(ngModel)]="web" #website="ngModel">
+             class="form-control input-md" placeholder="Website" [(ngModel)]="container.website" #website="ngModel">
       <div *ngIf="website.invalid && (website.dirty || website.touched)"
            class="alert alert-danger">
 
@@ -166,12 +171,9 @@
   <div class="center">
     <div class="form-group">
       <label>Country : </label>
-      <select name="countryname" id="countryId"  required class="form-control" [(ngModel)]="countryId" #countryname="ngModel">
-        <option value="India">India
-        <option value="Australia">Australia
-        <option value=" Afghanistan"> Afghanistan
-        <option value="Malaysia">UK
-        <option value="US">US
+      <select name="countryname" id="countryId"  required class="form-control" [(ngModel)]="container.countryname" #countryname="ngModel" (change)="GetSelectedCountry()">
+        <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+
       </select>
       <div *ngIf="countryname.invalid && (countryname.dirty || countryname.touched)"
            class="alert alert-danger">
@@ -184,14 +186,14 @@
 
     <div class="form-group">
       <label>State<span style="color: red">*</span> : </label>
-      <select name="sname" id="stateId"  required class="form-control" [(ngModel)]="stateId" #sname="ngModel">
+      <select name="state" id="stateId"  required class="form-control" [(ngModel)]="container.state" #state="ngModel">
         <option *ngFor="let state of states" [value]="state">{{state}}</option>
 
       </select>
-      <div *ngIf="sname.invalid && (sname.dirty || sname.touched)"
+      <div *ngIf="state.invalid && (state.dirty || state.touched)"
            class="alert alert-danger">
 
-        <div *ngIf="sname.errors.required" >
+        <div *ngIf="state.errors.required" >
           please select state.
         </div>
       </div>
@@ -199,41 +201,40 @@
 
     <div class="form-group">
       <label>Currency : </label>
-      <select name="currencyname" id="currencyId" required class="form-control" [(ngModel)]="currencyId" #currencyname="ngModel">
+      <select name="currency" id="currencyId" required class="form-control" [(ngModel)]="container.currency" #currency="ngModel">
         <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
 
       </select>
-      <div *ngIf="currencyname.invalid && (currencyname.dirty || currencyname.touched)"
+      <div *ngIf="currency.invalid && (currency.dirty || currency.touched)"
            class="alert alert-danger">
 
-        <div *ngIf="currencyname.errors.required" >
+        <div *ngIf="currency.errors.required" >
           please select currency.
         </div>
       </div>
     </div>
     </div>
   </div>
+
   <div class="form-group">
     <label>GST Registered? : </label>
-    <input type="radio" name="registeredCompany" required
+    <input type="radio" name="GSTregistered" required
            id="registeredCompany_0" value="true" checked="checked">
     Yes
-    <input type="radio" name="registeredCompany" required
+    <input type="radio" name="GSTregistered" required
            id="registeredCompany_1" value="false">
     No
   </div>
 
   <div class="form-group">
     <label>GST No. : </label>
-    <input type="text" name="register" required maxlength="15"
+    <input type="text" name="GSTno" required maxlength="15"
            id="registerNo" class="form-control input-md"
-           onblur="this.value = this.value.replace(/[^a-zA-Z 0-9\n\r.]+/g, ''),equalcheckComvsGst();"
-           onkeyup="this.value = this.value.replace(/[^a-zA-Z 0-9\n\r.]+/g, '');"
-           placeholder="GST No." [(ngModel)]="registerNo" #register="ngModel">
-    <div *ngIf="register.invalid && (register.dirty || register.touched)"
+               placeholder="GST No." [(ngModel)]="container.GSTno" #GSTno="ngModel">
+    <div *ngIf="GSTno.invalid && (GSTno.dirty || GSTno.touched)"
          class="alert alert-danger">
 
-      <div *ngIf="register.errors.required" >
+      <div *ngIf="GSTno.errors.required" >
         GST NO is required.
       </div>
     </div>
@@ -241,14 +242,22 @@
 
   <div class="form-group">
     <label>GST Registered Date : </label>
-    <input type="date" name="gstRegisteredDate" id="gstRegisteredDate" required [(ngModel)]="GSTregisterNo" #gstregister="ngModel">
-    <div *ngIf="gstregister.invalid && (gstregister.dirty || gstregister.touched)"
+    <input type="date" name="gstRegisteredDate" id="gstRegisteredDate" required [(ngModel)]="container.gstRegisteredDate"
+           #gstRegisteredDate="ngModel"  >
+   <div *ngIf="gstRegisteredDate.invalid && (gstRegisteredDate.dirty || gstRegisteredDate.touched)"
          class="alert alert-danger">
 
-      <div *ngIf="gstregister.errors.required" >
+      <div *ngIf="gstRegisteredDate.errors.required" >
         GST registered date is required.
       </div>
     </div>
+
+    <div *ngIf="gstRegisteredDate.valid" class="alert alert-danger">
+      <div *ngIf="(incdate.value > gstRegisteredDate.value) || (incdate.value == gstRegisteredDate.value)">
+        GST register date should be after company incorp date
+      </div>
+    </div>
+
   </div>
 
   <div class="form-group">
@@ -256,9 +265,17 @@
     <input
       style="display: none"
       type="file" (change)="onFileChanged($event)"
-      #fileInput>
+      #fileInput name="companylogo" required [(ngModel)]="container.companylogo"
+      #companylogo="ngModel"accept=".jpg, .jpeg, .png" >
     <button type="button" (click)="fileInput.click()">Select File</button>
-    <button (click)="onUpload()">Upload!</button>  </div>
+    <div *ngIf="companylogo.invalid && (companylogo.dirty || companylogo.touched)"
+         class="alert alert-danger">
+
+      <div *ngIf="companylogo.errors.required" >
+        file is not uploaded.
+      </div>
+    </div>
+  </div>
   </div>
 </nav>
 
@@ -266,7 +283,7 @@
     <div class="right">
   <div class="form-group">
     <label>Last Accounting Year Closing Date<span style="color: red">*</span> : </label>
-    <input type="Date" name="yearclosing" id="yearclosing" required [(ngModel)]="yearclosingdate" #yearclosing="ngModel">
+    <input type="Date" name="yearclosing" id="yearclosing" required [(ngModel)]="container.yearclosing" (change)="lastdate($event)" #yearclosing="ngModel" format="YYYY-MM-DD">
     <div *ngIf="yearclosing.invalid && (yearclosing.dirty || yearclosing.touched)"
          class="alert alert-danger">
 
@@ -278,7 +295,7 @@
 
     <div class="form-group">
       <label>Closing Method : </label>
-      <select name="closingMethod" id="closingMethod" class="form-control" required [(ngModel)]="closingmethod" #closingMethod="ngModel">
+      <select name="closingMethod" id="closingMethod" class="form-control" required [(ngModel)]="container.closingmethod" #closingMethod="ngModel">
         <option value="yearCl">Yearly Closing</option>
       </select>
       <div *ngIf="closingMethod.invalid && (closingMethod.dirty || closingMethod.touched)"
@@ -293,7 +310,7 @@
     <div class="form-group">
       <label>Starting Period<span style="color: red">*</span> : </label>
       <select name="startperiod" id="startperiod"
-              class="form-control" required [(ngModel)]="startingperiod" #startperiod="ngModel">
+              class="form-control" required [(ngModel)]="container.startingperiod" #startperiod="ngModel">
         <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -320,7 +337,7 @@
     <div class="form-group">
       <label>Closing Period<span style="color: red">*</span> : </label>
       <select name="closeperiod" id="closingperiod"
-              class="form-control" required [(ngModel)]="closingperiod" #closeperiod="ngModel">
+              class="form-control" required [(ngModel)]="container.closeperiod" #closeperiod="ngModel" (change)="todate($event)" >
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -341,16 +358,17 @@
           please select closeingperiod.
         </div>
       </div>
-     /* <div *ngIf="closeperiod.valid" class="alert alert-danger">
-        <div *ngIf="(startperiod.value > closeperiod.value) || (starperiod.value == closeperiod.value)">
+<!--
+     <div *ngIf="closeperiod.valid" class="alert alert-danger">
+        <div *ngIf="(startperiod. getRawValue()> closeperiod. getRawValue()) || (startperiod. getRawValue() == closeperiod. getRawValue())">
             Starting period should not be greater than or equal to closing period
       </div>
-      </div>*/
+      </div>-->
     </div>
 
     <div class="form-group">
       <label>Extension Period : </label>
-      <select name="bufferDays" id="bufferDays" class="form-control" required [(ngModel)]="extension" #bufferDays="ngModel">
+      <select name="ExtensionPeriod" id="bufferDays" class="form-control" (change)="extension($event)" required [(ngModel)]="container.ExtensionPeriod" #ExtensionPeriod="ngModel">
         <option value="0" selected="selected">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -359,10 +377,10 @@
         <option value="5">5</option>
         <option value="6">6</option>
       </select>
-      <div *ngIf="bufferDays.invalid && (bufferDays.dirty || bufferDays.touched)"
+      <div *ngIf="ExtensionPeriod.invalid && (ExtensionPeriod.dirty || ExtensionPeriod.touched)"
            class="alert alert-danger">
 
-        <div *ngIf="bufferDays.errors.required" >
+        <div *ngIf="ExtensionPeriod.errors.required" >
           please select extension period.
         </div>
       </div>
@@ -372,31 +390,33 @@
     <p>This Accounting Year</p>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" ng-controller="form-cntlr">
       <label >From : </label>
-      <input type="text" name="startyear" value=""
+      <input type="text" name="startyear" value="{{yearclosing  }}" readonly  [(ngModel)]="container.startyear" #startyear="ngModel" dateFormat="dd/MM/yyyy"
              id="startyear" required
-             class="form-control">
+             class="form-control" >
+      <!--<span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The name is required.</span>-->
+
     </div>
 
     <div class="form-group">
       <label >To : </label>
-      <input type="text" name="endyear" value=""
+      <input type="text" name="endyear" value="{{startyear}}" readonly [(ngModel)]="container.endyear" #endyear="ngModel"
              required id="endyear"
-             class="form-control">
+             class="form-control"/>
     </div>
 
     <div class="form-group">
       <label >Extension : </label>
-      <input type="text" name="bufferDate" value=""
+      <input type="text" name="Extension" value="{{ExtensionPeriod}}" readonly [(ngModel)]="container.Extension" #bufferDate="ngModel"
              required id="bufferDate"
-             class="form-control">
+             class="form-control"/>
     </div>
 
     <div class="form-group">
     <label>GST Taxable Period : </label>
       <select name="gstreturnalertdue" id="gstreturnalertdue1"
-              class="form-control" required [(ngModel)]="gsttaxble" #gstreturnalertdue="ngModel">
+              class="form-control" required [(ngModel)]="container.gstreturnalertdue" #gstreturnalertdue="ngModel">
         <option value="1" selected="selected">Monthly</option>
         <option value="3">Quarterly</option>
       </select>
@@ -412,9 +432,9 @@
   </nav>
 </form>
 
-  <div class="row text-right" style="margin-top: 15px;">
-    <button type="Submit"[disabled]="form.invalid" ng-submit="save()">save</button>
-    <input type='submit'class="right" (click)="cancel()" value="cancel" />
+  <div class="btn-set">
+    <button (click)="save()" >Save</button>
+    <button (click)="cancel()" value="cancel">Cancel</button>
   </div>
 
 </div>
