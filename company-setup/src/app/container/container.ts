@@ -9,20 +9,20 @@ export class Container {
   language:string;
   email:string;
   website:string;
-  countryname:string;
-  state:string;
+  countryname:object;
+  state:object;
   currency:string;
   GSTregistered:string;
   GSTno:string;
   gstRegisteredDate:string;
-  companylogo:any;
+  companylogo:object;
   yearclosing:any;
   closingMethod:string;
   startperiod:string;
   closeperiod:number;
   ExtensionPeriod:string;
   startyear:any;
-  endyear:Date;
+  endyear:any;
   Extension:string;
   gstreturnalertdue:string;
 }

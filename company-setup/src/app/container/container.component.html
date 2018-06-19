@@ -37,9 +37,10 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" >
+
       <label>Incorp.Date<span style="color: red">*</span> : </label>
-      <input type="date" name="incdate" id="incdate" required [(ngModel)]="container.incdate" #incdate="ngModel">
+      <input  name="incdate" type="date" id="incdate" required [(ngModel)]="container.incdate" #incdate="ngModel">
     <div *ngIf="incdate.invalid && (incdate.dirty ||incdate.touched)"
          class="alert alert-danger">
 
@@ -268,6 +269,7 @@
       #fileInput name="companylogo" required [(ngModel)]="container.companylogo"
       #companylogo="ngModel"accept=".jpg, .jpeg, .png" >
     <button type="button" (click)="fileInput.click()">Select File</button>
+
     <div *ngIf="companylogo.invalid && (companylogo.dirty || companylogo.touched)"
          class="alert alert-danger">
 
@@ -310,7 +312,7 @@
     <div class="form-group">
       <label>Starting Period<span style="color: red">*</span> : </label>
       <select name="startperiod" id="startperiod"
-              class="form-control" required [(ngModel)]="container.startingperiod" #startperiod="ngModel">
+              class="form-control" required [(ngModel)]="container.startperiod" #startperiod="ngModel">
         <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -338,18 +340,18 @@
       <label>Closing Period<span style="color: red">*</span> : </label>
       <select name="closeperiod" id="closingperiod"
               class="form-control" required [(ngModel)]="container.closeperiod" #closeperiod="ngModel" (change)="todate($event)" >
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+        <option value=6>6</option>
+        <option value=7>7</option>
+        <option value=8>8</option>
+        <option value=9>9</option>
+        <option value=10>10</option>
+        <option value=11>11</option>
+        <option value=12>12</option>
       </select>
       <div *ngIf="closeperiod.invalid && (closeperiod.dirty || closeperiod.touched)"
            class="alert alert-danger">
@@ -392,10 +394,10 @@
 
     <div class="form-group" ng-controller="form-cntlr">
       <label >From : </label>
-      <input type="text" name="startyear" value="{{yearclosing  }}" readonly  [(ngModel)]="container.startyear" #startyear="ngModel" dateFormat="dd/MM/yyyy"
+      <input type="text" name="startyear" value="{{yearclosing  }}" readonly  [(ngModel)]="container.startyear" #startyear="ngModel" displayFormat="dd/MM/yyyy"
              id="startyear" required
              class="form-control" >
-      <!--<span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The name is required.</span>-->
+         <!--<span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The name is required.</span>-->
 
     </div>
 

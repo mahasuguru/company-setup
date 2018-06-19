@@ -26,7 +26,72 @@ export class ContainerComponent implements OnInit {
       this.validate();
     }
   }
+  /*
+  countries = [
+    {
+      "name": "India",
+      "id": 1
+    },
+    {
+      "name": "Australia",
+      "id": 2
+    },
+    {
+      "name": "USA",
+      "id": 3
+    },
+    {
+      "name": "Afghanistan",
+      "id": 4
+    },
+    {
+      "name": "Malaysia",
+      "id": 5
+    }
+  ];
 
+  states= [
+    {
+      "name": "Andrapradesh",
+      "id": 1,
+      "countryId": 1
+    },
+    {
+      "name": "Karnataka",
+      "id": 2,
+      "countryId": 1
+    },
+    {
+      "name": "Telangana",
+      "id": 3,
+      "countryId": 1
+    },
+    {
+      "name": "Tamilnadu",
+      "id": 4,
+      "countryId": 1
+    },
+    {
+      "name": "Maharastra",
+      "id": 5,
+      "countryId": 1
+    }, {
+      "name": "Alabama",
+      "id": 1,
+      "countryId": 3
+    },
+    {
+      "name": "Alaska",
+      "id": 2,
+      "countryId": 3
+    },
+    {
+      "name": "Arizona",
+      "id": 3,
+      "countryId": 3
+    },
+
+  ];*/
   countries: string[] = [
     'Australia',
     'USA',
@@ -52,8 +117,16 @@ export class ContainerComponent implements OnInit {
   ];
 
   onFileChanged(event) {
+    var reader = new FileReader();
+    reader.onload = function()
+    {
+      var output = document.getElementById('output_image');
+       output = reader.result;
+    }
+    reader.readAsDataURL(event.target.files[0]);
 
-    this.selectedFile =<File> event.target.files[0]
+    // this.selectedFile =<File> event.target.files[0]
+
   }
   onUpload() {
     // upload code goes here
@@ -72,52 +145,59 @@ export class ContainerComponent implements OnInit {
       });
   }
 
-
-
-
-
   ngOnInit() {
 
   }
+
   GetSelectedCountry(){
-    alert('Are you sure?');
+
+    /*{
+      $scope.availableStates = [];
+      angular.forEach($scope.states, function (value)
+      {
+        if (value.countryId == $scope.country.id)
+        {
+          $scope.availableStates.push(value);
+        }
+      }*/
     let strCountry = document.getElementById("country");
   }
  lastdate($event){
-
-   alert('Are you ok'+(this.container. yearclosing));
    this.container.startyear = new Date(this.container.yearclosing);
-   //this.container.startyear = new Date(this.container.yearclosing.getDate() + 1);
-
-   alert('Are you ok'+(this.container.startyear.toDateString()));
-  /*let dd = this.container. startyear.getDate();
-   alert('haii'+dd);
-   let mm = this.container. startyear.getMonth()+1 ;
-   alert('haii'+mm);
-   let y = this.container. startyear.getFullYear();
-   alert('haii'+y);
-   let someFormattedDate = mm+ '/' + dd+ '/' + y;
-   alert('haii'+someFormattedDate);*/
-  let dd=this.container.startyear.getDate()+1;
-   alert('Are you ok'+dd);
-
-   this.container. startyear.setDate(this.container.startyear.getDate()+1).toLocaleString();
-
-   alert('Are you ok'+(this.container. startyear));
+   this.container. startyear.setDate(this.container.startyear.getDate()+1);
+   var dd =  this.container. startyear.getDate();
+   var mm =  this.container. startyear.getMonth()+1;
+   var yyyy =  this.container. startyear.getFullYear();
+   if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm}
+   this.container. startyear = mm+'/'+dd+'/'+yyyy;
 
 }
   todate($event) {
     this.container.endyear = new Date(this.container.startyear );
-    alert('Are you ok'+(this.container. endyear));
+    var x=this.container.closeperiod;
+     /* var thisMonth = this.container.endyear.getMonth();
+    this.container.endyear.setMonth(thisMonth+x);
+    alert('Are you ok'+(this.container. endyear.getMonth()));
 
-    this.container. endyear.setDate(this.container. endyear.getMonth()+this.container.closeperiod);
-    alert('Are you ok'+(this.container. endyear));
+    if(this.container.endyear.getMonth() != thisMonth+x && this.container.endyear.getMonth() != 0)
+      this.container.endyear.setDate(0);
+    alert('Are you ok'+(this.container. endyear));*/
 
+    var dd =   this.container. endyear.getDate();
+    var mm =   this.container. endyear.getMonth()+1;
+    var yyyy =   this.container. endyear.getFullYear();
+    var ModMonth = mm + Number(x);
+
+     if(dd<10){dd='0'+dd} if(ModMonth<10){ModMonth='0'+ModMonth}
+    if (ModMonth > 12)
+    {
+      ModMonth = ModMonth-12;
+      yyyy = yyyy + 1;
+    }
+    this.container. endyear = ModMonth+'/'+dd+'/'+yyyy;
   }
   extension($event){
     this.container.Extension = (this.container.ExtensionPeriod);
-    alert('Are you ok'+(this.container. Extension));
-
   }
   cancel() {
 
@@ -133,7 +213,9 @@ export class ContainerComponent implements OnInit {
       alert('Are you Sure to submitCompanySetupPage?');
 
         }
-alert('fields required');
+        else{
+      alert('fields required');
+    }
     }
 
   validate(){
